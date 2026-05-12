@@ -1,3 +1,6 @@
+# Plans 
+# 1. Kun uus henkilö liityy, pistää bottiin RP nimensä, miten pääsi servulle, ja kiinostaako jengi asiat?
+
 from typing import Optional
 
 import discord
