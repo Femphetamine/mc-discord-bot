@@ -13,7 +13,6 @@ import discord.ext
 from discord.ext import commands
 from discord import app_commands
 
-
 intents = discord.Intents.all
 client = discord.Client(intents=discord.Intents.all())
 
