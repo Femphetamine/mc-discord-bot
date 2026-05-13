@@ -26,8 +26,9 @@ async def hello(interaction: discord.Interaction):
 async def setupserver(interaction: discord.Interaction):
     print(f"Setupserver")
     await interaction.response.send_message("Odotappa hetki...")
-    await interaction.guild.create_role(name="Presidentti")
-    await interaction.guild.system_channel.send("Presidentti luotu")
+    presidentti = await interaction.guild.create_role(name="Presidentti")
+    presidentti.edit(colour=discord.Colour(a8150a)) # type: ignore
+    await interaction.guild.system_channel.send("Presidentti luotu") # mitä vittua mä teen :D en ymmärrä paskaakaa
 
 @client.event
 async def on_ready():
