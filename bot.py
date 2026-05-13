@@ -30,9 +30,9 @@ async def on_message(message):
         print("Terminal test ping")
         spam = true
         while spam == true:
-            await message.channel.send("botti elää perkel")
-            time.sleep(2)
-            spam = false
+            await message.channel.send("valkosuomi voimaan!")
+        time.sleep(2)
+        spam = false
         return
 
 client.run("MTUwMzc3NzIxNTYyMjQxODQ5NA.GEaT7J.bsdF_pfIRMbF-oa9cVSNBGE1x_HC9Lvd_exbvo")
