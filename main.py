@@ -112,7 +112,7 @@ async def setupserver(interaction: discord.Interaction):
         "-- Käyttäytyminen --\n"
         "1. Kunnioita kaikkia jäseniä, jokainen jäsen on yhtä tärkeä. NAISIA EI LOUKATA/HAKATA.\n"
         "2. Ei selän takana puhumista, luottamuss on kaiken perusta.\n" \
-        "3. Liivit aina päällä, edustat MC:tä.\n" \
+        "3. Edusta MC:tä vaatetuksella.\n" \
         "\n" \
         "-- Seuraukset --\n" \
         "Sääntöjen jatkuva rikkominen seuraa erotus.")
