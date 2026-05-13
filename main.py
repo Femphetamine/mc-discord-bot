@@ -116,9 +116,31 @@ async def setupserver(interaction: discord.Interaction):
         "\n" \
         "-- Seuraukset --\n" \
         "Sääntöjen jatkuva rikkominen seuraa erotus.")
+    await interaction.guild.system_channel.send("Säännöt lisätty")
 
+    channel = discord.utils.get(interaction.guild.channels, name="hierarkia")
+    channel_id = channel.id
+    await channel.send("Presidentti -- Johtaa ja edustaa klubia, päätökset tehdään yhdessä upseeriston kanssa.\n" \
+        "\n" \
+        "Varapresidentti -- Ottaa presidentin vallan tilapäisesti haltuun kun presidentti ei ole paikalla\n" \
+        "\n" \
+        "Upseeristo -- Ei kuvausta\n" \
+        "\n" \
+        "Ase-kessu -- Ei kuvausta\n" \
+        "\n" \
+        "Sihteeri -- Ei kuvausta\n" \
+        "\n" \
+        "Prospect -- Ei kuvausta\n" \
+        "\n" \
+        "Jäsen -- Ei kuvausta")
+    
+    channel = discord.utils.get(interaction.guild.channels, name="sisäänpääsy")
+    channel_id = channel.id
+    await channel.send("Kirjoita - !!Roolini - tälle kanavalle, botti tarkistaa oletko jo listattu jäseneksi ja mihin rooliin pääset, saat automaattisesti roolin.")
 
+    await interaction.guild.system_channel.send("Hierarki teksti lisätty")
     await interaction.guild.system_channel.send("-- Pohja valmis!")
+
 @client.event
 async def on_ready():
     try:
