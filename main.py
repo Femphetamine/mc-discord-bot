@@ -1,9 +1,7 @@
 # Plans 
 # Tämän hetkinen:
 # Automatisoi setuppi.
-# 1. Kun uus henkilö liityy, henkilö laittaa bottiin RP nimensä, miten pääsi servulle, ja kiinostaako jengi asiat?
-# Sitten Upseeristo valitsee kyllä tai joo liittyäkseen
-# 2. Vaihteleva RPC botille, vaihtuu joka minuutti
+# Vaihteleva RPC botille, vaihtuu joka minuutti
 import secrets
 token = secrets.token
 from typing import Optional
@@ -25,9 +23,9 @@ client = discord.Client(intents=intents)
 tree = app_commands.CommandTree(client)
 
 @tree.command(
-        name="MC Setup"
-        description="Botti rakentaa MC pohjan."
-        guild=discord.object(id=1409292359690092697)
+        name="MC Setup",
+        description="Botti rakentaa MC pohjan.",
+        guild=discord.object(id=1409292359690092697),
 )
 
 @client.event
