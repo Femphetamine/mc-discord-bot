@@ -6,32 +6,27 @@ import secrets
 token = secrets.token
 from typing import Optional
 import discord
-from discord import app_commands
+import discord.ext
 from discord.ext import commands
-import math
-import threading
-import time
-import asyncio
 
-intents = discord.Intents.default() # Mitä asioita botti haluaa nähdä?
-intents.message_content = True
-intents.members = True
-intents.guilds = True
-intents.guild_messages = True
-
+intents = discord.Intents.all()
 client = discord.Client(intents=intents)
-tree = app_commands.CommandTree(client)
 
-@tree.command(
-        name="MC Setup",
-        description="Botti rakentaa MC pohjan.",
-        guild=discord.object(id=1409292359690092697),
-)
+bot = commands.bot(command_prefix="!", intents = discord.intents.all())
+
+@bot.tree.command(name="test")
+async def hello(interaction: discord.Interaction):
+    await interaction.response.send_message("Päivää sullekki")
 
 @client.event
 async def on_ready():
     print(f"Logged in as {client.user}")
-    await tree.sync(guild=discord.Object(id=1409292359690092697))
+    try:
+        synced = await bot.tree.sync()
+        print(f"Synced {len(synced)} commands!")
+    except Exception as e:
+        print(e)
+
     activity = discord.Game(name=f"Tällä hetkellä kehittämässä 'setup' komentoa.")
     await client.change_presence(status=discord.Status.online, activity=activity)
 
