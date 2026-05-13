@@ -11,7 +11,7 @@ from typing import Optional
 import discord
 import discord.ext
 from discord.ext import commands
-from discord import app_commands
+from discord import Permissions, app_commands
 
 intents = discord.Intents.all
 client = discord.Client(intents=discord.Intents.all())
@@ -27,8 +27,11 @@ async def setupserver(interaction: discord.Interaction):
     print(f"Setupserver")
     await interaction.response.send_message("Odotappa hetki...")
     presidentti = await interaction.guild.create_role(name="Presidentti")
-    presidentti.edit(colour=discord.Colour(a8150a)) # type: ignore
+    await presidentti.edit(colour=discord.Colour.from_str("#a8150a"), hoist=True)
     await interaction.guild.system_channel.send("Presidentti luotu") # mitä vittua mä teen :D en ymmärrä paskaakaa
+    varapresidentti = await interaction.guild.create_role(name="Varapresidentti")
+    await varapresidentti.edit(colour=discord.Colour.from_str("#ab6311"))
+    await interaction.guild.system_channel.send("Varapresidentti luotu")
 
 @client.event
 async def on_ready():
