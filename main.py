@@ -102,6 +102,23 @@ async def setupserver(interaction: discord.Interaction):
     dev = await interaction.guild.create_text_channel(name="dev", category=upseeristoKategoria)
     await interaction.guild.system_channel.send("'dev' teksti kanava luotu")
 
+    channel = discord.utils.get(interaction.guild.channels, name="säännöt")
+    channel_id = channel.id
+    await channel.send("--  Kunnioita hierarkiaa  --\n" \
+        "1. Presidentin sana on laki.\n"
+        "2. Varapresidentti johtaa presidentin poissa ollessa.\n"
+        "3. Toimi roolisi sisällä, ellei muuten sanottu. (Jos ketään ei ole specifissä roolissa, voit toimia omasi ja vapaan roolin sisällä\n" \
+        "\n"
+        "-- Käyttäytyminen --\n"
+        "1. Kunnioita kaikkia jäseniä, jokainen jäsen on yhtä tärkeä. NAISIA EI LOUKATA/HAKATA.\n"
+        "2. Ei selän takana puhumista, luottamuss on kaiken perusta.\n" \
+        "3. Liivit aina päällä, edustat MC:tä.\n" \
+        "\n" \
+        "-- Seuraukset --\n" \
+        "Sääntöjen jatkuva rikkominen seuraa erotus.")
+
+
+    await interaction.guild.system_channel.send("-- Pohja valmis!")
 @client.event
 async def on_ready():
     try:
