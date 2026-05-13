@@ -32,34 +32,28 @@ async def setupserver(interaction: discord.Interaction):
     await interaction.guild.system_channel.send("'Presidentti' rooli luotu") # mitä vittua mä teen :D en ymmärrä paskaakaa
 
     varapresidentti = await interaction.guild.create_role(name="Varapresidentti")
-    await varapresidentti.edit(colour=discord.Colour.from_str("#ab6311"))
+    await varapresidentti.edit(colour=discord.Colour.from_str("#ab6311"), hoist=True)
     await interaction.guild.system_channel.send("'Varapresidentti' rooli luotu")
 
     upseeristo = await interaction.guild.create_role(name="Upseeristo")
-    await upseeristo.edit(colour=discord.Colour.from_str("#000dff"))
+    await upseeristo.edit(colour=discord.Colour.from_str("#000dff"), hoist=True)
     await interaction.guild.system_channel.send("'Upseeristo' rooli luotu")
 
     asekessu = await interaction.guild.create_role(name="Ase-kessu")
-    await asekessu.edit(colour=discord.Colour.from_str("#dfdf02"))
+    await asekessu.edit(colour=discord.Colour.from_str("#dfdf02"), hoist=True)
     await interaction.guild.system_channel.send("'Ase-kessu' rooli luotu")
 
     sihteeri = await interaction.guild.create_role(name="Sihteeri")
-    await sihteeri.edit(colour=discord.Colour.from_str("#00e5ff"))
+    await sihteeri.edit(colour=discord.Colour.from_str("#00e5ff"), hoist=True)
     await interaction.guild.system_channel.send("'Sihteeri' rooli luotu")
 
     prospect = await interaction.guild.create_role(name="Prospect")
-    await prospect.edit(colour=discord.Colour.from_str("#b8b8b8"))
+    await prospect.edit(colour=discord.Colour.from_str("#b8b8b8"), hoist=True)
     await interaction.guild.system_channel.send("'Prospect' rooli luotu")
 
     jäsen = await interaction.guild.create_role(name="Jäsen")
-    await jäsen.edit(colour=discord.Colour.from_str("#9432af"))
-    await interaction.guild.system_channel.send("'Jäsen' rooli luotu") 
-
-    ## < Seuraavaksi >
-    ## Luo kanavat, ja lukitse ne vain jäsenille, upseeristolla omat kanavat
-
-    # await kategoria.set_permissions(jäsen, view_channel=True, read_messages=True, send_messages=True)
-    # tää sopis muille kategorioille
+    await jäsen.edit(colour=discord.Colour.from_str("#9432af"), hoist=True)
+    await interaction.guild.system_channel.send("'Jäsen' rooli luotu")
 
     sisäänpääsy = await interaction.guild.create_text_channel(name="sisäänpääsy")
     await sisäänpääsy.set_permissions(jäsen, view_channel=False, read_messages=False, send_messages=False)
@@ -67,6 +61,46 @@ async def setupserver(interaction: discord.Interaction):
 
     tiedonlähde = await interaction.guild.create_category(name="Tiedonlähde")
     await tiedonlähde.set_permissions(interaction.guild.default_role, view_channel=False, read_messages=False, send_messages=False)
+    await tiedonlähde.set_permissions(jäsen, view_channel=True, read_messages=True, send_messages=False)
+    await tiedonlähde.set_permissions(upseeristo, view_channel=True, read_messages=True, send_messages=True)
+    await interaction.guild.system_channel.send("'Tiedönlähde' kategoria luotu")
+
+    säännöt = await interaction.guild.create_text_channel(name="säännöt", category=tiedonlähde)
+    await interaction.guild.system_channel.send("'Säännöt' teksti kanava luotu")
+
+    hierarkia = await interaction.guild.create_text_channel(name="hierarkia", category=tiedonlähde)
+    await interaction.guild.system_channel.send("'hierarkia' teksti kanava luotu")
+
+    tiedotteet = await interaction.guild.create_text_channel(name="tiedotteet", category=tiedonlähde)
+    await interaction.guild.system_channel.send("'tiedotteet' teksti kanava luotu")
+
+    radiokanava = await interaction.guild.create_text_channel(name="radio", category=tiedonlähde)
+    await interaction.guild.system_channel.send("'radio' teksti kanava luotu")
+
+    keskustelu = await interaction.guild.create_category(name="Keskustelu")
+    await keskustelu.set_permissions(interaction.guild.default_role, view_channel=False, read_messages=False, send_messages=False)
+    await keskustelu.set_permissions(jäsen, view_channel=True, read_messages=True, send_messages=True)
+    await interaction.guild.system_channel.send("'Keskustelu' kategoria luotu")
+
+    ooc = await interaction.guild.create_text_channel(name="ooc", category=keskustelu)
+    await interaction.guild.system_channel.send("'ooc' teksti kanava luotu")
+    
+    media = await interaction.guild.create_text_channel(name="media", category=keskustelu)
+    await interaction.guild.system_channel.send("'media' teksti kanava luotu")
+
+    puh = await interaction.guild.create_voice_channel(name="Puhelu", category=keskustelu)
+    await interaction.guild.system_channel.send("'Puhelu' teksti kanava luotu")
+
+    upseeristoKategoria = await interaction.guild.create_category(name="Upseeristo")
+    await upseeristoKategoria.set_permissions(interaction.guild.default_role, view_channel=False, read_messages=False, send_messages=False)
+    await upseeristoKategoria.set_permissions(jäsen, view_channel=True, read_messages=False, send_messages=False)
+    await upseeristoKategoria.set_permissions(upseeristo, view_channel=True, read_messages=True, send_messages=True)
+
+    upooc = await interaction.guild.create_text_channel(name="upooc", category=upseeristoKategoria)
+    await interaction.guild.system_channel.send("'upseeristo_ooc' teksti kanava luotu")
+
+    dev = await interaction.guild.create_text_channel(name="dev", category=upseeristoKategoria)
+    await interaction.guild.system_channel.send("'dev' teksti kanava luotu")
 
 @client.event
 async def on_ready():
