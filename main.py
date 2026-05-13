@@ -26,12 +26,30 @@ async def hello(interaction: discord.Interaction):
 async def setupserver(interaction: discord.Interaction):
     print(f"Setupserver")
     await interaction.response.send_message("Odotappa hetki...")
+
     presidentti = await interaction.guild.create_role(name="Presidentti")
     await presidentti.edit(colour=discord.Colour.from_str("#a8150a"), hoist=True)
-    await interaction.guild.system_channel.send("Presidentti luotu") # mitä vittua mä teen :D en ymmärrä paskaakaa
+    await interaction.guild.system_channel.send("Presidentti rooli luotu") # mitä vittua mä teen :D en ymmärrä paskaakaa
+
     varapresidentti = await interaction.guild.create_role(name="Varapresidentti")
     await varapresidentti.edit(colour=discord.Colour.from_str("#ab6311"))
-    await interaction.guild.system_channel.send("Varapresidentti luotu")
+    await interaction.guild.system_channel.send("Varapresidentti rooli luotu")
+
+    asekessu = await interaction.guild.create_role(name="Ase-kessu")
+    await asekessu.edit(colour=discord.Colour.from_str("#dfdf02"))
+    await interaction.guild.system_channel.send("Ase-kessu rooli luotu")
+
+    Sihteeri = await interaction.guild.create_role(name="Sihteeri")
+    await Sihteeri.edit(colour=discord.Colour.from_str("#00e5ff"))
+    await interaction.guild.system_channel.send("Sihteeri rooli luotu")
+
+    Prospect = await interaction.guild.create_role(name="Prospect")
+    await Prospect.edit(colour=discord.Colour.from_str("#b8b8b8"))
+    await interaction.guild.system_channel.send("Prospect rooli luotu")
+
+    Prospect = await interaction.guild.create_role(name="Jäsen")
+    await Prospect.edit(colour=discord.Colour.from_str("#9432af"))
+    await interaction.guild.system_channel.send("Jäsen rooli luotu")
 
 @client.event
 async def on_ready():
