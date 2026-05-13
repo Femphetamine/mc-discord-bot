@@ -5,21 +5,14 @@
 
 from typing import Optional
 
-import discord.ext
-import time
+import discord
 from discord import app_commands
-<<<<<<< HEAD
 from discord.ext import commands
 
 import math
 import threading
 import time
 import asyncio
-=======
-true = True
-false = False
-spam = false
->>>>>>> ffd47e1dca29456b8847a221e71ba413115ef78d
 
 intents = discord.Intents.default() # Mitä asioita botti haluaa nähdä?
 intents.message_content = True
@@ -27,12 +20,10 @@ intents.members = True
 intents.guilds = True
 intents.guild_messages = True
 
-
 client = discord.Client(intents=intents)
 
 @client.event
 async def on_ready():
-<<<<<<< HEAD
     print(f"We have logged in as {client.user}")  
     activity = discord.Game(name=f"Kerho elää!", 
     large_image="https://i.imgur.com/E8hOFp1.jpeg",
@@ -41,25 +32,9 @@ async def on_ready():
     state="Mä oon vieläki tässä pelissä, nii älä äiti itke")
     await client.change_presence(status=discord.Status.online, activity=activity)
 
-@client.command()
-async def PohjaSetup(ctx): # Luo MC Kerhon Pohja, roolit ja kanavat.
-    print(f"Pohjasetup aloitettu klo {time.strftime}")
-    pass
-=======
-    print(f"We have logged in as {client.user}")
-
-@client.event  
-async def on_message(message):
-    if message.author == client.user:
-        return
-    if message.content.startswith("test"):
-        print("Terminal test ping")
-        spam = true
-        while spam == true:
-            await message.channel.send("valkosuomi voimaan!")
-        time.sleep(2)
-        spam = false
-        return
->>>>>>> ffd47e1dca29456b8847a221e71ba413115ef78d
+# @client.command()
+# async def PohjaSetup(ctx): # Luo MC Kerhon Pohja, roolit ja kanavat.
+#     print(f"Pohjasetup aloitettu klo {time.strftime}")
+#     pass
 
 client.run("MTUwMzc3NzIxNTYyMjQxODQ5NA.GEaT7J.bsdF_pfIRMbF-oa9cVSNBGE1x_HC9Lvd_exbvo")
