@@ -174,7 +174,7 @@ async def on_ready():
     except Exception as e:
         print(e)
     print(f"Logged in as {client.user}")
-    activity = discord.Game(name=f"Tällä hetkellä kehittämässä 'setup' komentoa.")
+    activity = discord.Game(name=f"Kehittelyssä")
     await client.change_presence(status=discord.Status.online, activity=activity)
 
 client.run(token) # type: ignores
