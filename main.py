@@ -10,25 +10,29 @@ import discord.ext
 from discord.ext import commands
 from discord import Permissions, app_commands
 
-intents = discord.Intents.all
-client = discord.Client(intents=discord.Intents.all())
+intents = discord.Intents.default()
+intents.message_content = True
 
-tree = app_commands.CommandTree(client)
+bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 # ephereal
 
-@tree.command(name="rooli")
-async def rooli(interaction: discord.Interaction):
-    return
+@bot.command()
+async def päivitä_säännöt(ctx, *, arg, number):
+    if ctx.author == bot.user:
+        return
+    if ctx.author.id == 980559850234843177:
+        channel = discord.utils.get(ctx.guild.channels, name="säännöt")
+        print(f"!päivitä_säännöt käytettiin")
+        await channel.send(arg)
+    else:
+        print("Error")
+        await ctx.send("Haista vittu!")
+        return
 
-@client.event
+@bot.event
 async def on_ready():
-    try:
-        synced = await tree.sync()
-        print("Synced tree")
-    except Exception as e:
-        print(e)
-    print(f"Logged in as {client.user}")
+    print(f"Logged in as {bot.user}")
     activity = discord.Game(name=f"Kehittelyssä")
-    await client.change_presence(status=discord.Status.online, activity=activity)
+    await bot.change_presence(status=discord.Status.online, activity=activity)
 
-client.run(token) # type: ignores
+bot.run(token) # type: ignores
