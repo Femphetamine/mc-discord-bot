@@ -23,7 +23,6 @@ async def lähetä_säännöt(ctx, *, arg):
         print(f"!päivitä_säännöt käytettiin")
         await channel.send(arg)
     else:
-        print("Error")
         await ctx.send("Haista vittu!")
         return
     
@@ -36,7 +35,6 @@ async def lähetä_tiedotteet(ctx, *, arg):
         print(f"!päivitä_säännöt käytettiin")
         await channel.send(arg)
     else:
-        print("Error")
         await ctx.send("Haista vittu!")
         return
     
@@ -49,7 +47,6 @@ async def lähetä_hierarkia(ctx, *, arg):
         print(f"!päivitä_säännöt käytettiin")
         await channel.send(arg)
     else:
-        print("Error")
         await ctx.send("Haista vittu!")
         return
     
@@ -62,7 +59,6 @@ async def lähetä_radio(ctx, *, arg):
         print(f"!päivitä_säännöt käytettiin")
         await channel.send(arg)
     else:
-        print("Error")
         await ctx.send("Haista vittu!")
         return
 
