@@ -146,7 +146,7 @@ async def rooliKommandi(interaction: discord.Interaction):
     elif interaction.user.id == 980559850234843177:
         await interaction.response.send_message("Varapresidentti")
     elif interaction.user.id == 847543159046012998:
-        await interaction.response.send_message("Upseeri (Mietitään vielä sulle joku rooli)")
+        await interaction.response.send_message("Ei keksitty mitään roolia sulle vielä, odotappa vaa")
 
 @client.event
 async def on_ready():
