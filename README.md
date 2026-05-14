@@ -10,7 +10,6 @@ Tavoitteena on rakentaa parempi ja helpommin ylläpidettävä botti, jossa kaikk
 
 ## Tulevaisuuden ominaisuudet
 
-- Serveripohjan automaattinen luonti yhdellä komennolla  
 - Automaattinen roolien jako oikeille henkilöille  
 - Ylläpitokanavien automatisointi ja päivitykset  
 - Ylläpidon työkalut ja moderaatio-ominaisuudet  

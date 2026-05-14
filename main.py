@@ -14,6 +14,11 @@ intents = discord.Intents.all
 client = discord.Client(intents=discord.Intents.all())
 
 tree = app_commands.CommandTree(client)
+# ephereal
+
+@tree.command(name="rooli")
+async def rooli(interaction: discord.Interaction):
+    return
 
 @client.event
 async def on_ready():
