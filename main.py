@@ -127,9 +127,9 @@ async def setupserver(interaction: discord.Interaction):
             "\n" \
             "Sihteeri -- Ei kuvausta\n" \
             "\n" \
-            "Prospect -- Ei kuvausta\n" \
+            "Jäsen -- Ei kuvausta" \
             "\n" \
-            "Jäsen -- Ei kuvausta")
+            "Prospect -- Ei kuvausta\n")
 
         channel = discord.utils.get(interaction.guild.channels, name="sisäänpääsy")
         channel_id = channel.id
@@ -161,6 +161,13 @@ async def rooliKommandi(interaction: discord.Interaction):
     elif interaction.user.id == 847543159046012998: # Tuomo
         await interaction.response.send_message("Ei keksitty mitään roolia sulle vielä, odotappa vaa")
         await interaction.user.add_roles(jäsrool)
+
+    elif interaction.user.id == 663441192565997598: # Daniel
+        await interaction.response.send_message("Ei keksitty mitään roolia sulle vielä, odotappa vaa")
+        await interaction.user.add_roles(jäsrool)
+    
+    else:
+        await interaction.response.send_message("Sinua ei ole vielä laitettu listalle ylös, tai et ole jäsen kerhossa")
 
 #@tree.command(name="päivitäroolinimet")
 #@tree.command(name="päivitäsäännöt")
