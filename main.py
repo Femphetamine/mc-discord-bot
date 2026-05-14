@@ -149,6 +149,7 @@ async def rooliKommandi(interaction: discord.Interaction):
         await interaction.user.add_roles(upserole)
         await interaction.user.add_roles(jäsrool)
 
+
     elif interaction.user.id == 980559850234843177: # Sebastian
         await interaction.response.send_message("Varapresidentti")
         varapresrole = discord.utils.get(interaction.guild.roles, name="Varapresidentti")
@@ -161,6 +162,10 @@ async def rooliKommandi(interaction: discord.Interaction):
         await interaction.response.send_message("Ei keksitty mitään roolia sulle vielä, odotappa vaa")
         await interaction.user.add_roles(jäsrool)
 
+#@tree.command(name="päivitäroolinimet")
+#@tree.command(name="päivitäsäännöt")
+#@tree.command(name="päivitähierarkia")
+
 @client.event
 async def on_ready():
     try:
@@ -172,4 +177,4 @@ async def on_ready():
     activity = discord.Game(name=f"Tällä hetkellä kehittämässä 'setup' komentoa.")
     await client.change_presence(status=discord.Status.online, activity=activity)
 
-client.run(token) # type: ignore
+client.run(token) # type: ignores
