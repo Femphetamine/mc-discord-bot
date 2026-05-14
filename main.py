@@ -133,20 +133,33 @@ async def setupserver(interaction: discord.Interaction):
 
         channel = discord.utils.get(interaction.guild.channels, name="sisäänpääsy")
         channel_id = channel.id
-        await channel.send("Kirjoita - !!Roolini - tälle kanavalle, botti tarkistaa oletko jo listattu jäseneksi ja mihin rooliin pääset, saat automaattisesti roolin.")
+        await channel.send("Kirjoita /rooli, botti tarkistaa oletko jo lisätty jäsenlistalle")
 
         await interaction.guild.system_channel.send("Hierarki teksti lisätty")
         await interaction.guild.system_channel.send("-- Pohja valmis!")
 
 @tree.command(name="test") # TODO: Vaihda tämän nimi!!! "rooli"
 async def rooliKommandi(interaction: discord.Interaction):
-    # await interaction.response.send_message(f"The id of the user that invoked this command is {interaction.user.id}")
-    if interaction.user.id == 684389100790349939:
+    jäsrool = discord.utils.get(interaction.guild.roles, name="Jäsen")
+    if interaction.user.id == 684389100790349939: # Teemu
         await interaction.response.send_message("Presidentti")
-    elif interaction.user.id == 980559850234843177:
+        presrole = discord.utils.get(interaction.guild.roles, name="Presidentti")
+        upserole = discord.utils.get(interaction.guild.roles, name="Upseeristo")
+        await interaction.user.add_roles(presrole)
+        await interaction.user.add_roles(upserole)
+        await interaction.user.add_roles(jäsrool)
+
+    elif interaction.user.id == 980559850234843177: # Sebastian
         await interaction.response.send_message("Varapresidentti")
-    elif interaction.user.id == 847543159046012998:
+        varapresrole = discord.utils.get(interaction.guild.roles, name="Varapresidentti")
+        upserole = discord.utils.get(interaction.guild.roles, name="Upseeristo")
+        await interaction.user.add_roles(varapresrole)
+        await interaction.user.add_roles(upserole)
+        await interaction.user.add_roles(jäsrool)
+
+    elif interaction.user.id == 847543159046012998: # Tuomo
         await interaction.response.send_message("Ei keksitty mitään roolia sulle vielä, odotappa vaa")
+        await interaction.user.add_roles(jäsrool)
 
 @client.event
 async def on_ready():
