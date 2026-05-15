@@ -5,9 +5,7 @@ token = os.getenv("DISCORD_TOKEN")
 
 from typing import Optional
 import discord
-import discord.ext
 from discord.ext import commands
-from discord import Permissions, app_commands # en tiiä tarviiko näitä, en haluu koskea.
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -54,7 +52,7 @@ async def lähetä_hierarkia(ctx, *, arg):
 async def lähetä_radio(ctx, *, arg):
     if ctx.author == bot.user:
         return
-    if ctx.author.id == 980559850234843177 or 684389100790349939:
+    if ctx.author.id in [980559850234843177, 684389100790349939]:
         channel = discord.utils.get(ctx.guild.channels, name="radio")
         print(f"!lähetä_radio käytettiin")
         await channel.send(arg)
@@ -78,7 +76,7 @@ async def lähetä_rooli(ctx, *, arg):
 async def apua(ctx):
     if ctx.author == bot.user:
         return
-    await ctx.send("prefix = $  |   $lähetä_radio, $lähetä_hierarkia, $lähetä_tiedotteet, $lähetä_rooli $apua")
+    await ctx.send("prefix = $  |   $apua, $ping, $lähetä_radio, $lähetä_hierarkia, $lähetä_tiedotteet, $lähetä_rooli")
 
 @bot.event
 async def on_ready():
